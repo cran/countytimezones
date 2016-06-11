@@ -1,0 +1,17 @@
+e1a6a69c409f4d6751ccdaace1c9c6ab *DESCRIPTION
+96ca106f47f9f717686b6efa9f8e7124 *NAMESPACE
+37f9af1526187d7e393a9917f8bcd28c *R/add_local_time.R
+5eae4a23398753881919a6cba2f8b13f *R/data.R
+27fc7ac5b3d3e640edf19ec3bfe7a99b *README.md
+616b088600aeee5e6a765e18fd9c25ff *build/vignette.rds
+2d204bde640de2d66f5ad209d22267bf *data/county_tzs.rda
+dc06c7258d4a8fde4fd2ed8d92fa51e0 *data/floyd.rda
+fb6d1495cc0b88c8df8c9006f8e07508 *inst/doc/countytimezones.R
+36b256d384823692841c30273438ce89 *inst/doc/countytimezones.Rmd
+6fcd8accde5039cc9d806a15449d87c1 *inst/doc/countytimezones.html
+ab91eaede487dd7322c3e5eb3af4e05a *man/add_local_time.Rd
+dbf94e60e3d8c95b7ac8a40e961675e3 *man/calc_local_time.Rd
+febb0367db3b3bd6ebaa9171a52ea838 *man/calc_single_datetime.Rd
+efaadf46830fb426b7a718264cdf2dc7 *man/county_tzs.Rd
+d51c8f8a757562cd8baeb508d6749b85 *man/floyd.Rd
+36b256d384823692841c30273438ce89 *vignettes/countytimezones.Rmd
