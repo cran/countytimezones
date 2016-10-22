@@ -1,8 +1,12 @@
 ## ----echo = FALSE--------------------------------------------------------
 library(countytimezones)
 
-## ----eval = FALSE, message = FALSE---------------------------------------
+## ----eval = FALSE--------------------------------------------------------
+#  install.packages("countytimezones")
+
+## ----eval = FALSE--------------------------------------------------------
 #  library(devtools)
+#  install_github("geanders/countytimezones")
 #  library(countytimezones)
 
 ## ------------------------------------------------------------------------
@@ -64,10 +68,11 @@ a <- CountyChoropleth$new(to_plot)
 a$ggplot_scale <- scale_fill_brewer(type = "qual", drop = FALSE)
 a$render()
 
-## ----fig.width = 7, fig.height = 5, warning = FALSE, message = FALSE-----
+## ------------------------------------------------------------------------
 data(floyd)
 head(floyd)
 
+## ----fig.width = 7, fig.height = 5, warning = FALSE, message = FALSE-----
 eastern_states <- c("alabama", "arkansas", "connecticut", "delaware",
                             "district of columbia", "florida", "georgia", "illinois",
                             "indiana", "iowa", "kansas", "kentucky", "louisiana",
@@ -89,11 +94,12 @@ a$ggplot_scale <- scale_fill_brewer(type = "qual", drop = FALSE)
 a$set_zoom(eastern_states)
 a$render()
 
-## ----fig.width = 7, fig.height = 5, warning = FALSE, message = FALSE-----
+## ------------------------------------------------------------------------
 floyd <- add_local_time(floyd, fips = floyd$fips,
                         datetime_colname = "closest_time_utc")
 head(floyd)
 
+## ----fig.width = 7, fig.height = 5, warning = FALSE, message = FALSE-----
 to_plot <- select(floyd, fips, local_date) %>%
   mutate(fips = as.numeric(fips))%>%
   dplyr::rename(region = fips, value = local_date)

@@ -90,9 +90,23 @@ add_local_time <- function(df, fips, datetime_colname, include_tz = TRUE){
 #'
 #' @export
 calc_local_time <- function(date_time, fips, include_tz = TRUE){
+  fips <- as.numeric(as.character(fips))
+
+  wrong_fips <- fips[!(as.numeric(fips) %in% countytimezones::county_tzs$fips)]
+  if (length(wrong_fips) > 0){
+    warning(paste("The following FIPS did not match values in our dataset:",
+                  paste(wrong_fips, collapse = ", ")))
+    fips <- fips[(fips %in% countytimezones::county_tzs$fips)]
+   }
+
   # Convert date-time to POSIXct class if it's not already
   if(!("POSIXct" %in% class(date_time))){
-    date_time <- lubridate::ymd_hm(date_time)
+    safe_ymd_hm <- purrr::safely(lubridate::ymd_hm)
+    date_time <- safe_ymd_hm(date_time)
+    if(!is.null(date_time$error)){
+      stop("The `date_time` must be in a format like `1999-01-01 08:00`.")
+    }
+    date_time <- date_time$result
   }
 
   if(include_tz){
@@ -140,4 +154,5 @@ calc_single_datetime <- function(datetime, tz){
   local_time <- format(local_time, format = "%Y%m%d%H%M%S")
   return(local_time)
 }
+
 
